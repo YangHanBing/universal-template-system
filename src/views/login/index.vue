@@ -87,6 +87,7 @@ const handleLoginSubmit = async (formName) => {
   })
 }
 
+// 密码框状态切换
 const handllePassWordStatus = () => {
   inputType.value = inputType.value === 'password' ? 'text' : 'password'
 }
