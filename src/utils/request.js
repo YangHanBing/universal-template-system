@@ -18,4 +18,12 @@ service.interceptors.response.use(
     return Promise.reject(err)
   })
 
-export default service
+// 统一为data传参
+const request = (options) => {
+  if (options.method.toLowerCase() === 'get') {
+    options.params = options.data || {}
+  }
+  service(options)
+}
+
+export default request

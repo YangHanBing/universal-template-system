@@ -1,6 +1,6 @@
-import service from '@/utils/request'
+import request from '@/utils/request'
 const getUser = (data) => {
-  return service({
+  return request({
     url: '/sys/login',
     method: 'POST',
     data
