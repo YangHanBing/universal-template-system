@@ -14,18 +14,18 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'space-before-function-paren': 'off',
-    'no-tabs': 'warn',
-    'vue/multi-word-component-names': 'off'
+    'no-tabs': 'warn', // 不空格改为警告
+    'vue/multi-word-component-names': 'off',
+    'eqeqeq': ["off"], // 针对“===”的eslint报错
+    "no-unused-vars": 'off' // 让未被使用的变量改为警告
   },
-  overrides: [
-    {
-      files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)'
-      ],
-      env: {
-        jest: true
-      }
+  overrides: [{
+    files: [
+      '**/__tests__/*.{j,t}s?(x)',
+      '**/tests/unit/**/*.spec.{j,t}s?(x)'
+    ],
+    env: {
+      jest: true
     }
-  ]
+  }]
 }

@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-const getUser = (data) => {
+const login = (data) => {
   return request({
     url: '/sys/login',
     method: 'POST',
@@ -7,5 +7,5 @@ const getUser = (data) => {
   })
 }
 export default {
-  getUser
+  login
 }
