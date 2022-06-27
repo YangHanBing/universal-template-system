@@ -53,6 +53,7 @@ import { validatePassword } from './rule'
 // import { Avatar, Search, View, Hide } from '@element-plus/icons-vue'
 import User from '../../api/user'
 import md5 from 'md5'
+import util from '../../utils/util'
 
 const inputType = ref('password')
 
@@ -90,10 +91,10 @@ const handleLoginSubmit = async () => {
   if (!LoginForm.value) return
   await LoginForm.value.validate(async (valid) => {
     if (valid) {
-      alert('0000')
-      loginForm.password = md5(loginForm.password)
-      const response = await User.getUser(loginForm)
-      console.log(response)
+      const newLoginForm = util.deepCopy(loginForm)
+      newLoginForm.password = md5(newLoginForm.password)
+      // const response = await User.getUser(loginForm)
+      // console.log(response)
     }
   })
 }
