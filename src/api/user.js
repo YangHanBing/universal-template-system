@@ -1,8 +1,9 @@
 import service from '@/utils/request'
-const getUser = () => {
+const getUser = (data) => {
   return service({
-    url: '/admin/login',
-    methos: 'POST'
+    url: '/sys/login',
+    method: 'POST',
+    data
   })
 }
 export default {

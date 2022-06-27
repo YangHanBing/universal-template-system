@@ -1,6 +1,6 @@
 import axios from 'axios'
 const service = axios.create({
-  baseURL: 'http://2105b.9yuecloud.com/pro-api',
+  baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
 })
 service.interceptors.request.use(

@@ -90,7 +90,7 @@ const handleLoginSubmit = async () => {
   await LoginForm.value.validate(async (valid) => {
     if (valid) {
       alert('0000')
-      const response = await User.getUser()
+      const response = await User.getUser(loginForm)
       console.log(response)
     }
   })
