@@ -52,6 +52,7 @@ import { reactive, ref, computed } from 'vue'
 import { validatePassword } from './rule'
 // import { Avatar, Search, View, Hide } from '@element-plus/icons-vue'
 import User from '../../api/user'
+import md5 from 'md5'
 
 const inputType = ref('password')
 
@@ -90,6 +91,7 @@ const handleLoginSubmit = async () => {
   await LoginForm.value.validate(async (valid) => {
     if (valid) {
       alert('0000')
+      loginForm.password = md5(loginForm.password)
       const response = await User.getUser(loginForm)
       console.log(response)
     }
