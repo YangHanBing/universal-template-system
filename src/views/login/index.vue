@@ -22,7 +22,7 @@
             <avatar />
           </el-icon>
         </span> -->
-        <el-input v-model="loginForm.username" />
+        <el-input v-model.trim="loginForm.username" />
       </el-form-item>
       <el-form-item prop="password">
         <span class="svg-container">
@@ -30,7 +30,7 @@
             <svg-icon icon="password"></svg-icon>
           </el-icon>
         </span>
-        <el-input :type="inputType" v-model="loginForm.password"></el-input>
+        <el-input :type="inputType" v-model.trim="loginForm.password"></el-input>
         <span class="svg-pwd" @click="handllePassWordStatus">
           <el-icon>
             <svg-icon :icon="passwordIconStatus"></svg-icon>
