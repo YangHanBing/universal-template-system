@@ -30,17 +30,17 @@
             <svg-icon icon="password"></svg-icon>
           </el-icon>
         </span>
-        <el-input :type="inputType" v-model.trim="loginForm.password"></el-input>
+        <el-input
+          :type="inputType"
+          v-model.trim="loginForm.password"
+        ></el-input>
         <span class="svg-pwd" @click="handllePassWordStatus">
           <el-icon>
             <svg-icon :icon="passwordIconStatus"></svg-icon>
           </el-icon>
         </span>
       </el-form-item>
-      <el-button
-        class="login-button"
-        type="primary"
-        @click="handleLoginSubmit(LoginForm)"
+      <el-button class="login-button" type="primary" @click="handleLoginSubmit"
         >登录</el-button
       >
     </el-form>
@@ -51,8 +51,11 @@
 import { reactive, ref, computed } from 'vue'
 import { validatePassword } from './rule'
 // import { Avatar, Search, View, Hide } from '@element-plus/icons-vue'
+import User from '../../api/user'
 
 const inputType = ref('password')
+
+const LoginForm = ref()
 
 const loginForm = reactive({
   username: 'admin',
@@ -82,11 +85,13 @@ const passwordIconStatus = computed(() => {
 })
 
 // 登录事件
-const handleLoginSubmit = async (formName) => {
-  if (!formName) return
-  await formName.validate((valid) => {
+const handleLoginSubmit = async () => {
+  if (!LoginForm.value) return
+  await LoginForm.value.validate(async (valid) => {
     if (valid) {
-      alert('登录')
+      alert('0000')
+      const response = await User.getUser()
+      console.log(response)
     }
   })
 }
