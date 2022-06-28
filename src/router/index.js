@@ -1,12 +1,30 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHashHistory
+} from 'vue-router'
 
 // 公有路由表
-const publicRoutes = [
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/login')
-  }
+const publicRoutes = [{
+  path: '/',
+  redirect: '/home'
+},
+{
+  path: '/login',
+  name: 'login',
+  component: () => import('../views/login')
+},
+{
+  path: '/index',
+  name: 'index',
+  component: () => import('../views/index.vue'),
+  children: [
+    {
+      path: '/home',
+      name: 'Home',
+      component: () => import('../views/user/Home.vue')
+    }
+  ]
+}
 ]
 
 const router = createRouter({

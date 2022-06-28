@@ -94,8 +94,6 @@ const handleLoginSubmit = async () => {
       const newLoginForm = util.deepCopy(loginForm)
       newLoginForm.password = md5(newLoginForm.password)
       store.dispatch('user/login', newLoginForm)
-      // const response = await User.getUser(loginForm)
-      // console.log(response)
     }
   })
 }
