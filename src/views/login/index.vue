@@ -96,7 +96,6 @@ const handleLoginSubmit = async () => {
       const newLoginForm = util.deepCopy(loginForm)
       newLoginForm.password = md5(newLoginForm.password)
       const response = await store.dispatch('user/login', newLoginForm)
-      console.log(response)
       if (response.token) router.push('/')
     }
   })

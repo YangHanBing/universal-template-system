@@ -10,6 +10,8 @@ import store from './store'
 import './styles/index.scss'
 import './iconfont/iconfont.css'
 import installIcons from './icons/index.js'
+// 页面鉴权
+import './permission'
 
 const app = createApp(App)
 installIcons(app)
