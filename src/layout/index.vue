@@ -51,13 +51,17 @@
         </el-menu>
       </el-col>
       <el-col :span="20" class="home_right">
-        <div class='home_right_nav'>
+        <div class='navabr'>
+          <div class='home_right_nav'>
+
+          </div>
+          <div class="tagsView">
+
+          </div>
+        </div>
+        <div class="addmamin">
 
         </div>
-        <div class="tagsView">
-
-        </div>
-        <router-view></router-view>
       </el-col>
     </el-row>
   </div>
