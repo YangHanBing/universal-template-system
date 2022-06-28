@@ -13,7 +13,7 @@ export default {
   actions: {
     async login({ commit }, payload) {
       const response = await User.login(payload)
-      const token = response.data.data.token
+      const token = response.token
       commit('setToken', token)
     }
   }

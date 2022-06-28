@@ -3,10 +3,13 @@ import axios from 'axios'
 import loading from './loading'
 
 import md5 from 'md5'
+
+import { ElMessage } from 'element-plus'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
 })
+// 请求拦截器
 service.interceptors.request.use(
   (config) => {
     loading.open()
@@ -20,15 +23,29 @@ service.interceptors.request.use(
     loading.close()
     return Promise.reject(err)
   })
+// 响应拦截器
 service.interceptors.response.use(
   (res) => {
     loading.close()
-    return res
+    const { success, data, message } = res.data
+    if (success) {
+      return data
+    } else {
+      _showError(message)
+      return Promise.reject(new Error(message))
+    }
   },
-  (err) => {
+  (error) => {
     loading.close()
-    return Promise.reject(err)
+    _showError(error.message)
+    return Promise.reject(error)
   })
+
+// 响应提示信息
+const _showError = (message) => {
+  const info = message || '发生未知错误'
+  ElMessage.error(info)
+}
 
 // 统一为data传参
 const request = (options) => {
