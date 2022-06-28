@@ -2,7 +2,7 @@ import User from '../../api/user'
 export default {
   namespaced: true,
   state: () => ({
-    token: ''
+    token: '' || localStorage.getItem('token')
   }),
   mutations: {
     setToken(state, token) {

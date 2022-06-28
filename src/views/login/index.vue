@@ -54,7 +54,10 @@ import { validatePassword } from './rule'
 import md5 from 'md5'
 import util from '../../utils/util'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 const store = useStore()
+const router = useRouter()
 const inputType = ref('password')
 
 const LoginForm = ref()
@@ -93,7 +96,12 @@ const handleLoginSubmit = async () => {
     if (valid) {
       const newLoginForm = util.deepCopy(loginForm)
       newLoginForm.password = md5(newLoginForm.password)
-      store.dispatch('user/login', newLoginForm)
+      store.dispatch('user/login', newLoginForm).then(() => {
+        if (localStorage.getItem('token')) {
+          router.push('/')
+          ElMessage.success('登录成功')
+        }
+      })
     }
   })
 }
