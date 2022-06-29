@@ -17,7 +17,8 @@ module.exports = {
     'no-tabs': 'warn', // 不空格改为警告
     'vue/multi-word-component-names': 'off',
     'eqeqeq': ["off"], // 针对“===”的eslint报错
-    "no-unused-vars": 'off' // 让未被使用的变量改为警告
+    "no-unused-vars": 'off', // 让未被使用的变量改为警告
+    'eol-last': 0 //取消最后一个空行的规则校验
   },
   overrides: [{
     files: [
