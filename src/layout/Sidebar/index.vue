@@ -1,22 +1,5 @@
 <template>
-<div class='container'>
-  <p>left</p>
-</div>
+  <div class="sidebar">left</div>
 </template>
-
-<script>
-export default {
-  name: '',
-  components: {},
-  data () {
-    return {
-    }
-  },
-  created () { },
-  mounted () { },
-  methods: {}
-}
-</script>
-<style scoped lang='scss'>
-
-</style>
+<script setup></script>
+<style scoped lang="scss"></style>

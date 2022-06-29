@@ -18,5 +18,9 @@ export default {
 }
 </script>
 <style scoped lang='scss'>
-
+.container{
+  height: calc(100vh - 84px);
+  padding:104px 20px 20px 20px;
+  background-color: #ccc;
+}
 </style>
