@@ -1,26 +1,25 @@
 <template>
-<div class='container'>
-  <p>appmain</p>
-</div>
+  <div class="container">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
   name: '',
   components: {},
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
-  created () { },
-  mounted () { },
+  created() {},
+  mounted() {},
   methods: {}
 }
 </script>
-<style scoped lang='scss'>
-.container{
+<style scoped lang="scss">
+.container {
   height: calc(100vh - 84px);
-  padding:104px 20px 20px 20px;
+  padding: 104px 20px 20px 20px;
   background-color: #ccc;
 }
 </style>

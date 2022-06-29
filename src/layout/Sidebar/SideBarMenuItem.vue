@@ -19,8 +19,7 @@
         v-for="(childItem, index) in item.children"
         :menuList="childItem"
         :key="index"
-      ></SideBarMenuItem>】
-      }
+      ></SideBarMenuItem>
     </el-sub-menu>
   </template>
 </template>

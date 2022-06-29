@@ -18,7 +18,9 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     'eqeqeq': ["off"], // 针对“===”的eslint报错
     "no-unused-vars": 'off', // 让未被使用的变量改为警告
-    'eol-last': 0 //取消最后一个空行的规则校验
+    'eol-last': 0, //取消最后一个空行的规则校验
+    "indent": ["off", 2],//解决缩进报错
+    'semi': 0,//语句末尾使用了引号，去掉分号后就可以
   },
   overrides: [{
     files: [
