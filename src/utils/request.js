@@ -9,6 +9,7 @@ import md5 from 'md5'
 import {
   ElMessage
 } from 'element-plus'
+import { isCheckTimeout } from './auth'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
@@ -26,6 +27,13 @@ service.interceptors.request.use(
     // TODO 将token 通过请求头发送给后台
     const token = store.getters.token
     if (token) config.headers.Authorization = 'Bearer ' + token
+    // 当token超时时退出登录（被动退出登录）
+    if (token) {
+      if (isCheckTimeout()) {
+        store.dispatch('user/logout')
+        router.push('./login')
+      }
+    }
     return config
   },
   (err) => {
@@ -50,6 +58,11 @@ service.interceptors.response.use(
   },
   (error) => {
     loading.close()
+    // 让token过期时退出登录（被动退出登录）
+    if (error.response && error.response.data && error.response.data.code === 401) {
+      store.dispatch('user/lgout')
+      router.push('/login')
+    }
     _showError(error.message)
     return Promise.reject(error)
   })

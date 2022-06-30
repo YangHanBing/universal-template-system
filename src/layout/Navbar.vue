@@ -71,4 +71,7 @@ const handleLogout = async () => {
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
   }
 }
+.el-avatar{
+    background : none;
+  }
 </style>
