@@ -1,10 +1,14 @@
 import axios from 'axios'
 // 引入封装订单loading加载
 import loading from './loading'
+import router from '../router'
+import store from '../store'
 
 import md5 from 'md5'
 
-import { ElMessage } from 'element-plus'
+import {
+  ElMessage
+} from 'element-plus'
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
   timeout: 5000
@@ -13,10 +17,15 @@ const service = axios.create({
 service.interceptors.request.use(
   (config) => {
     loading.open()
-    // TODO 将token 通过请求头发送给后台
-    const { icode, time } = getTestICode()
+    const {
+      icode,
+      time
+    } = getTestICode()
     config.headers.icode = icode
     config.headers.codeType = time
+    // TODO 将token 通过请求头发送给后台
+    const token = store.getters.token
+    if (token) config.headers.Authorization = 'Bearer ' + token
     return config
   },
   (err) => {
@@ -27,7 +36,11 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (res) => {
     loading.close()
-    const { success, data, message } = res.data
+    const {
+      success,
+      data,
+      message
+    } = res.data
     if (success) {
       return data
     } else {
