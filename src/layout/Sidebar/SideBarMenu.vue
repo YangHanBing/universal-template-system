@@ -3,7 +3,7 @@
     active-text-color="#fff"
     background-color="#304156"
     class="el-menu-vertical-demo"
-    default-active=""
+    :default-active="$route.path"
     text-color="#bfcbd9"
     unique-opened
     router

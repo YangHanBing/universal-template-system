@@ -1,7 +1,8 @@
 import User from '../../api/user'
 import {
   setItem,
-  getItem
+  getItem,
+  removeItem
 } from '../../utils/storage'
 export default {
   namespaced: true,
@@ -43,6 +44,13 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    // 删除本地和vuex的token和用户信息
+    logout({ commit }) {
+      commit('setToken', '')
+      commit('setUserInfo', '')
+      removeItem('token')
+      removeItem('userInfo')
     }
   }
 }
