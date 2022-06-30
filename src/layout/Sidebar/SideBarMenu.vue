@@ -16,9 +16,12 @@
   </el-menu>
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { filterMenuData } from '../../utils/menu'
 import SideBarMenuItem from './SideBarMenuItem'
+import { filterRouters, generateMenus } from '@/utils/router'
+const router = useRouter()
 const data = [
   {
     path: '/profile',
@@ -103,6 +106,10 @@ const data = [
     ]
   }
 ]
-const menuList = reactive(filterMenuData(data))
+// const menuList = reactive(filterMenuData(data))
+const menuList = computed(() => {
+  const routes = filterRouters(router.getRoutes())
+  return filterMenuData(generateMenus(routes))
+})
 </script>
 <style scoped lang="scss"></style>

@@ -1,4 +1,5 @@
-import { TIME_STAMP, TOKEN_TIMEOUT_VALUE, getItem, setItem } from './constant'
+import { TIME_STAMP, TOKEN_TIMEOUT_VALUE } from './constant'
+import { getItem, setItem } from '@/utils/storage'
 
 // 获取时间戳
 export function getTimeStamp() {
