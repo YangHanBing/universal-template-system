@@ -44,6 +44,16 @@
         >登录</el-button
       >
     </el-form>
+    <!-- <div class="desc">
+      测试权限账号：<br>
+      提供三种权限账号：
+      1. 超级管理员账号：super-admin
+      2. 管理员账号：admin
+      3. 测试可配置账号：test
+      密码统一为：123456
+
+      导入用户账号：
+    </div> -->
   </div>
 </template>
 
@@ -54,6 +64,7 @@ import { validatePassword } from './rule'
 import md5 from 'md5'
 import util from '../../utils/util'
 import { useStore } from 'vuex'
+import { setTimeStamp } from '../../utils/auth'
 import { useRouter } from 'vue-router'
 const store = useStore()
 const router = useRouter()
@@ -96,6 +107,7 @@ const handleLoginSubmit = async () => {
       const newLoginForm = util.deepCopy(loginForm)
       newLoginForm.password = md5(newLoginForm.password)
       const response = await store.dispatch('user/login', newLoginForm)
+      setTimeStamp()
       if (response.token) router.push('/')
     }
   })
@@ -200,5 +212,13 @@ $cursor: #fff;
       margin-bottom: 30px;
     }
   }
+}
+.desc{
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 520px;
+  height: 280px;
+  margin-left: 425px;
 }
 </style>

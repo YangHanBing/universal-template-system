@@ -7,13 +7,13 @@ export function getTimeStamp() {
 }
 // 设置时间戳
 export function setTimeStamp() {
-  return setItem(TOKEN_TIMEOUT_VALUE, Date.new())
+  return setItem(TIME_STAMP, Date.now())
 }
 
 // 判断是否超时
 export function isCheckTimeout() {
   // 当前时间戳
-  const currentTime = Date.new()
+  const currentTime = Date.now()
   // 缓存时间戳
   const timeStamp = getTimeStamp()
   return currentTime - timeStamp > TOKEN_TIMEOUT_VALUE

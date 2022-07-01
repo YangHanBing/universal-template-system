@@ -12,6 +12,7 @@ export default {
   }),
   mutations: {
     setToken(state, token) {
+      console.log(token);
       state.token = token
       setItem('token', token)
     },
@@ -27,6 +28,7 @@ export default {
     }, payload) {
       try {
         const response = await User.login(payload)
+        console.log(response);
         commit('setToken', response.token)
         return response
       } catch (err) {

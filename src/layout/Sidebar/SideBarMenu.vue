@@ -22,7 +22,14 @@ import { filterMenuData } from '../../utils/menu'
 import SideBarMenuItem from './SideBarMenuItem'
 import { filterRouters, generateMenus } from '@/utils/router'
 const router = useRouter()
-const data = [
+const menuList = computed(() => {
+  const routes = filterRouters(router.getRoutes())
+  return filterMenuData(generateMenus(routes))
+})
+</script>
+<style scoped lang="scss"></style>
+<!-- 固定数据菜单栏（将死数据动态渲染为菜单栏数据） -->
+<!-- const data = [
   {
     path: '/profile',
     name: 'profile',
@@ -106,10 +113,4 @@ const data = [
     ]
   }
 ]
-// const menuList = reactive(filterMenuData(data))
-const menuList = computed(() => {
-  const routes = filterRouters(router.getRoutes())
-  return filterMenuData(generateMenus(routes))
-})
-</script>
-<style scoped lang="scss"></style>
+ const menuList = reactive(filterMenuData(data)) -->

@@ -31,9 +31,10 @@ service.interceptors.request.use(
     if (token) {
       if (isCheckTimeout()) {
         store.dispatch('user/logout')
-        router.push('./login')
+        router.push('/login')
       }
     }
+
     return config
   },
   (err) => {
@@ -63,6 +64,12 @@ service.interceptors.response.use(
       store.dispatch('user/lgout')
       router.push('/login')
     }
+
+    // 单用户登录
+    // if (error.response && error.response.data && error.response.data.code === 401) {
+    //   store.dispatch('user/lgout')
+    //   router.push('/login')
+    // }
     _showError(error.message)
     return Promise.reject(error)
   })
