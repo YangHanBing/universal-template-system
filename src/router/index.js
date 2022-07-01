@@ -2,10 +2,14 @@ import {
   createRouter,
   createWebHashHistory
 } from 'vue-router'
-import Layout from '../layout'
+import UserManage from './modules/UserManage'
+import RoleList from './modules/RoleList'
+import PermissionList from './modules/PermissionList'
+import ArticleRanking from './modules/ArticleRanking'
+import ArticleCreate from './modules/ArticleCreate'
 
 // 公有路由表
-const publicRoutes = [{
+export const publicRoutes = [{
     path: '/login',
     name: 'login',
     component: () => import('../views/login')
@@ -46,7 +50,23 @@ const publicRoutes = [{
   }
 ]
 // 私有路由表
-const privateRoutes = [{
+export const privateRoutes = [
+  UserManage,
+  RoleList,
+  PermissionList,
+  ArticleRanking,
+  ArticleCreate
+]
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: publicRoutes
+})
+
+export default router
+
+/*
+* 私有路由
+{
     path: '/user',
     name: 'user',
     component: Layout,
@@ -128,10 +148,4 @@ const privateRoutes = [{
       }
     ]
   }
-]
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes: [...publicRoutes, ...privateRoutes]
-})
-
-export default router
+  */

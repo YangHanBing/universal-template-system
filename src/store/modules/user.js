@@ -1,5 +1,8 @@
 import User from '../../api/user'
 import {
+  resetRouter
+} from '../../utils/removeRouter'
+import {
   setItem,
   getItem,
   removeItem
@@ -8,17 +11,15 @@ export default {
   namespaced: true,
   state: () => ({
     token: getItem('token') || '',
-    userInfo: getItem('userInfo') || ''
+    userInfo: {}
   }),
   mutations: {
     setToken(state, token) {
-      console.log(token);
       state.token = token
       setItem('token', token)
     },
     setUserInfo(state, userInfo) {
       state.userInfo = userInfo
-      setItem('userInfo', userInfo)
     }
   },
   actions: {
@@ -28,7 +29,6 @@ export default {
     }, payload) {
       try {
         const response = await User.login(payload)
-        console.log(response);
         commit('setToken', response.token)
         return response
       } catch (err) {
@@ -48,11 +48,13 @@ export default {
       }
     },
     // 删除本地和vuex的token和用户信息
-    logout({ commit }) {
+    logout({
+      commit
+    }) {
+      resetRouter()
       commit('setToken', '')
-      commit('setUserInfo', '')
+      commit('setUserInfo', {})
       removeItem('token')
-      removeItem('userInfo')
     }
   }
 }
