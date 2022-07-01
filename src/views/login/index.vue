@@ -8,7 +8,14 @@
     >
       <div class="title-container">
         <h3 class="title">用户登录</h3>
-        <svg-icon className="svg-language" icon="language"></svg-icon>
+        <el-tooltip
+          class="box-item"
+          effect="light"
+          content="国际化"
+          placement="bottom"
+        >
+        <svg-icon className="svg-language" icon="language" append-to></svg-icon>
+        </el-tooltip>
         <!-- <span class="icon">icon</span> -->
       </div>
       <el-form-item prop="username">
@@ -44,16 +51,19 @@
         >登录</el-button
       >
     </el-form>
-    <!-- <div class="desc">
-      测试权限账号：<br>
-      提供三种权限账号：
-      1. 超级管理员账号：super-admin
-      2. 管理员账号：admin
-      3. 测试可配置账号：test
-      密码统一为：123456
-
-      导入用户账号：
-    </div> -->
+    <div class="desc">
+      测试权限账号：<br />
+      提供三种权限账号：<br />
+      1. 超级管理员账号: super-admin<br />
+      2. 管理员账号: admin<br />
+      3. 测试可配置账号: test<br />
+      密码统一为: 123456<br />
+      <br />
+      导入用户账号：<br />
+      可使用导入的用户名登录<br />
+      密码统一为: 123456<br />
+      <b>注意：导入用户区分中英文库！！！！</b>
+    </div>
   </div>
 </template>
 
@@ -127,7 +137,8 @@ $cursor: #fff;
 
 .login-container {
   position: relative;
-  height: 100%;
+  height: 100vh;
+  overflow: auto;
   background-color: $bg;
 
   .login-form {
@@ -135,8 +146,8 @@ $cursor: #fff;
     padding: 0 35px;
     position: absolute;
     left: 50%;
-    margin-left: -260px;
-    top: 160px;
+    margin-left: -300px;
+    top: 140px;
     overflow: hidden;
 
     ::v-deep .el-form-item {
@@ -213,12 +224,13 @@ $cursor: #fff;
     }
   }
 }
-.desc{
+.desc {
   color: #fff;
   position: absolute;
-  bottom: 0;
+  top: 405px;
   width: 520px;
-  height: 280px;
-  margin-left: 425px;
+  height: 310px;
+  margin-left: 390px;
+  line-height: 28px;
 }
 </style>
