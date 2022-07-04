@@ -22,7 +22,9 @@
         </el-dropdown>
       </div>
     </div>
-    <div class="tagsView"></div>
+    <div class="tagsView">
+      <TagsView></TagsView>
+    </div>
   </div>
 </template>
 
@@ -32,6 +34,7 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import Breadcrumb from '../components/Breadcrumb'
 import Hamburger from '../components/Hamburger'
+import TagsView from '../components/TagsView'
 const router = useRouter()
 const store = useStore()
 const avatarUrl = computed(() => {
@@ -75,6 +78,9 @@ const handleLogout = async () => {
   .tagsView {
     height: 34px;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
+    line-height:34px;
+    box-sizing: border-box;
+    padding-left: 10px;
   }
 }
 .el-avatar {
