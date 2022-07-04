@@ -1,4 +1,6 @@
-import { ElLoading } from 'element-plus'
+import {
+  ElLoading
+} from 'element-plus'
 const loading = {
   loadingInstance: null,
   open() {

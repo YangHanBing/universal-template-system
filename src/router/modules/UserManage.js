@@ -2,7 +2,7 @@ import Layout from '../../layout'
 export default {
   path: '/user',
   component: Layout,
-  name: 'UserManage',
+  name: 'userManage',
   meta: {
     title: '用户',
     icon: 'personnel'
