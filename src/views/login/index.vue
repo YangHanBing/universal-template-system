@@ -230,7 +230,7 @@ $cursor: #fff;
   top: 405px;
   width: 520px;
   height: 310px;
-  margin-left: 390px;
+  margin-left: 500px;
   line-height: 28px;
 }
 </style>

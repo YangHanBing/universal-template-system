@@ -10,7 +10,6 @@ export default {
   mutations: {
     setRoutes(state, newRoutes) {
       state.routes = [...publicRoutes, ...newRoutes]
-      console.log('newRoutes==>', state.routes);
     }
   },
   actions: {
