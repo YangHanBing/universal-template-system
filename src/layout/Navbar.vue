@@ -2,7 +2,8 @@
   <div class="navabr">
     <div class="navbar_con">
       <div class="navbar_left">
-        <p>个人中心</p>
+        <Hamburger class="navbar_left_icon"></Hamburger>
+        <Breadcrumb></Breadcrumb>
       </div>
       <div class="navbar_right">
         <el-dropdown @command="handleCommand" trigger="click">
@@ -29,6 +30,8 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import Breadcrumb from '../components/Breadcrumb'
+import Hamburger from '../components/Hamburger'
 const router = useRouter()
 const store = useStore()
 const avatarUrl = computed(() => {
@@ -65,13 +68,16 @@ const handleLogout = async () => {
     align-items: center;
     justify-content: space-between;
     padding: 0 40px 0 20px;
+    .navbar_left{
+      display: flex;
+    }
   }
   .tagsView {
     height: 34px;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
   }
 }
-.el-avatar{
-    background : none;
-  }
+.el-avatar {
+  background: none;
+}
 </style>
