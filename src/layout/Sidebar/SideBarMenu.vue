@@ -27,7 +27,11 @@ const menuList = computed(() => {
   return filterMenuData(generateMenus(routes))
 })
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.el-menu {
+  border-right: none;
+}
+</style>
 <!-- 固定数据菜单栏（将死数据动态渲染为菜单栏数据） -->
 <!-- const data = [
   {
